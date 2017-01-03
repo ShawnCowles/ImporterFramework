@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Twinning.ImporterFramework</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Shawn Cowles</authors>
+    <owners>Shawn Cowles</owners>
+    <licenseUrl>https://opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>https://github.com/ShawnCowles/ImporterFramework</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Framework for a type of import tool I frequently use.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+</package>
