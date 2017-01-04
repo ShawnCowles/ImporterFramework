@@ -5,7 +5,7 @@ using TiledSharp;
 
 namespace ImporterFramework.Workers
 {
-    public abstract class AbstractWorker
+    public abstract class AbstractWorker<T_M> where T_M : ImportContext
     {
         protected AbstractWorker()
         {
@@ -13,7 +13,7 @@ namespace ImporterFramework.Workers
 
         public abstract string Name { get; }
         
-        public abstract WorkResult DoWork(ImportContext importContext);
+        public abstract WorkResult DoWork(T_M importContext);
 
         protected WorkResult ReportOnException(Exception ex)
         {

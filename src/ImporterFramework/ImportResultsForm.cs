@@ -9,7 +9,7 @@ using ImporterFramework.Workers;
 
 namespace ImporterFramework
 {
-    public partial class ImportResultsForm<T> : Form where T : ImportContext, new()
+    public partial class ImportResultsForm<T> : Form where T : ImportContext
     {
         delegate void SetStatusCallback(string status, Color color);
 
@@ -17,7 +17,7 @@ namespace ImporterFramework
 
         private Dictionary<string, string> _resultDetails;
         
-        public ImportResultsForm(string title, T importContext, IEnumerable<AbstractWorker> workers)
+        public ImportResultsForm(string title, T importContext, IEnumerable<AbstractWorker<T>> workers)
         {
             InitializeComponent();
 
@@ -30,7 +30,7 @@ namespace ImporterFramework
             ImportAndValidate(importContext, workers);
         }
 
-        private async void ImportAndValidate(T importContext, IEnumerable<AbstractWorker> workers)
+        private async void ImportAndValidate(T importContext, IEnumerable<AbstractWorker<T>> workers)
         {
             SetStatus("Importing...", Color.Black);
 

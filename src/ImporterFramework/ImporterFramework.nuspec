@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/ShawnCowles/ImporterFramework</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Framework for a type of import tool I frequently use.</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Tweaks to fit actual usage.</releaseNotes>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>
