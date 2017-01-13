@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 using ImporterFramework.Data;
 using TiledSharp;
@@ -201,6 +202,18 @@ namespace ImporterFramework.Workers
             }
 
             throw new ImportException($"Property '{attributeName}' on element '{element.Name}' is not a double.");
+        }
+
+        protected XElement GetDescendant(XElement element, string descendantName)
+        {
+            var descendant = element.Descendants(descendantName).FirstOrDefault();
+
+            if (descendant == null)
+            {
+                throw new ImportException($"XElement '{element.Name}' is missing descendant with name '{descendantName}'");
+            }
+
+            return descendant;
         }
     }
 }
