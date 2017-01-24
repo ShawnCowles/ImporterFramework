@@ -204,6 +204,20 @@ namespace ImporterFramework.Workers
             throw new ImportException($"Property '{attributeName}' on element '{element.Name}' is not a double.");
         }
 
+        protected int GetIntAttribute(XElement element, string attributeName)
+        {
+            var val = GetAttribute(element, attributeName);
+
+            int d;
+
+            if (int.TryParse(val, out d))
+            {
+                return d;
+            }
+
+            throw new ImportException($"Property '{attributeName}' on element '{element.Name}' is not a double.");
+        }
+
         protected XElement GetDescendant(XElement element, string descendantName)
         {
             var descendant = element.Descendants(descendantName).FirstOrDefault();
