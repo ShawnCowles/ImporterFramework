@@ -9,8 +9,7 @@
     <licenseUrl>https://opensource.org/licenses/mit-license.php</licenseUrl>
     <projectUrl>https://github.com/ShawnCowles/ImporterFramework</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Framework for a type of import tool I frequently use.</description>
-    <releaseNotes>Added GetIntAttribute helper to AbstractWorker.</releaseNotes>
+    <description>$description$</description>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>

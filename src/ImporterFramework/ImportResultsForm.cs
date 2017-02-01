@@ -16,12 +16,18 @@ namespace ImporterFramework
         delegate void AddWorkResultCallback(WorkResult result);
 
         private Dictionary<string, string> _resultDetails;
-        
-        public ImportResultsForm(string title, T importContext, IEnumerable<AbstractWorker<T>> workers)
+        private readonly bool _autoCloseOnSuccess;
+
+        public ImportResultsForm(
+            string title, 
+            T importContext, 
+            IEnumerable<AbstractWorker<T>> workers,
+            bool autoCloseOnSuccess = false)
         {
             InitializeComponent();
 
             _resultDetails = new Dictionary<string, string>();
+            _autoCloseOnSuccess = autoCloseOnSuccess;
 
             Text = title;
 
@@ -52,6 +58,11 @@ namespace ImporterFramework
             if (results.All(r => r.Success))
             {
                 SetStatus("Import Successful", Color.Green);
+
+                if(_autoCloseOnSuccess)
+                {
+                    Dispose();
+                }
             }
             else
             {
