@@ -4,78 +4,51 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE96A0C4-2015-4C82-85E7-A7BB6A8B0E3A}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{B76E228C-FFA1-4E0C-A93E-C3B6D47840BC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImporterFramework</RootNamespace>
-    <AssemblyName>ImporterFramework</AssemblyName>
+    <RootNamespace>ImporterFramework.TestRun</RootNamespace>
+    <AssemblyName>ImporterFramework.TestRun</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <OutputPath>bin\$(Configuration)</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TiledSharp, Version=0.15.5889.20321, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\TiledSharp.0.15\lib\TiledSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ImportContext.cs" />
-    <Compile Include="Data\WorkResult.cs" />
-    <Compile Include="ImportException.cs" />
-    <Compile Include="ImportResultsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ImportResultsForm.Designer.cs">
-      <DependentUpon>ImportResultsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SuccessDisplay.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SuccessDisplay.Designer.cs">
-      <DependentUpon>SuccessDisplay.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Workers\AbstractWorker.cs" />
-    <EmbeddedResource Include="ImportResultsForm.resx">
-      <DependentUpon>ImportResultsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SuccessDisplay.resx">
-      <DependentUpon>SuccessDisplay.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="TestImportContext.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -84,10 +57,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ImporterFramework.nuspec" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImporterFramework\ImporterFramework.csproj">
+      <Project>{FE96A0C4-2015-4C82-85E7-A7BB6A8B0E3A}</Project>
+      <Name>ImporterFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

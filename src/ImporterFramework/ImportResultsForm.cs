@@ -18,6 +18,9 @@ namespace ImporterFramework
         private Dictionary<string, string> _resultDetails;
         private readonly bool _autoCloseOnSuccess;
 
+        private readonly T _importContext;
+        private readonly IEnumerable<AbstractWorker<T>> _workers;
+
         public ImportResultsForm(
             string title, 
             T importContext, 
@@ -30,10 +33,9 @@ namespace ImporterFramework
             _autoCloseOnSuccess = autoCloseOnSuccess;
 
             Text = title;
-
+            _importContext = importContext;
+            _workers = workers;
             SetStatus("Initializing...", Color.Black);
-
-            ImportAndValidate(importContext, workers);
         }
 
         private async void ImportAndValidate(T importContext, IEnumerable<AbstractWorker<T>> workers)
@@ -57,11 +59,13 @@ namespace ImporterFramework
 
             if (results.All(r => r.Success))
             {
-                SetStatus("Import Successful", Color.Green);
-
                 if(_autoCloseOnSuccess)
                 {
-                    Dispose();
+                    ShowSuccessAndClose();
+                }
+                else
+                {
+                    SetStatus("Import Successful", Color.Green);
                 }
             }
             else
@@ -69,7 +73,7 @@ namespace ImporterFramework
                 SetStatus("Import Failed!", Color.Red);
             }
         }
-
+        
         private void SetStatus(string status, Color color)
         {
             if (statusLabel.InvokeRequired)
@@ -95,7 +99,22 @@ namespace ImporterFramework
             }
         }
 
+        private void ShowSuccessAndClose()
+        {
+            while (Controls.Count > 0)
+            {
+                Controls[0].Dispose();
+            }
 
+            var successDisplay = new SuccessDisplay();
+            Controls.Add(successDisplay);
+            //AutoSize = true;
+            FormBorderStyle = FormBorderStyle.None;
+            Width = successDisplay.Width;
+            Height = successDisplay.Height;
+            CenterToScreen();
+        }
+        
         private void resultsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = resultsList.SelectedItem as WorkResult;
@@ -113,6 +132,12 @@ namespace ImporterFramework
         private void closeButton_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void ImportResultsForm_Load(object sender, EventArgs e)
+        {
+            CenterToScreen();
+            ImportAndValidate(_importContext, _workers);
         }
     }
 }

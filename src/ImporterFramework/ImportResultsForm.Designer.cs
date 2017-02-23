@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.closeButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.closeButton = new System.Windows.Forms.Button();
             this.resultsList = new System.Windows.Forms.ListBox();
             this.resultsDetailArea = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -46,17 +46,6 @@
             this.panel1.Size = new System.Drawing.Size(702, 30);
             this.panel1.TabIndex = 0;
             // 
-            // closeButton
-            // 
-            this.closeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.closeButton.Location = new System.Drawing.Point(624, 3);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(75, 23);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
             // statusLabel
             // 
             this.statusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -67,6 +56,17 @@
             this.statusLabel.Size = new System.Drawing.Size(41, 13);
             this.statusLabel.TabIndex = 1;
             this.statusLabel.Text = "label1";
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.closeButton.Location = new System.Drawing.Point(624, 3);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // resultsList
             // 
@@ -100,6 +100,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ImportResultsForm";
             this.Text = "ImporterFramework";
+            this.Load += new System.EventHandler(this.ImportResultsForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

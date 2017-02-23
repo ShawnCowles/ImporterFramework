@@ -1,4 +1,4 @@
 packages/
-src/ImporterFramework/bin/
-src/ImporterFramework/obj/
+bin/
+obj/
 .vs/
