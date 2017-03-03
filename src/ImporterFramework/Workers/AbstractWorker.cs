@@ -201,7 +201,7 @@ namespace ImporterFramework.Workers
                 return d;
             }
 
-            throw new ImportException($"Property '{attributeName}' on element '{element.Name}' is not a double.");
+            throw new ImportException($"Attribute '{attributeName}' on element '{element.Name}' is not a double.");
         }
 
         protected int GetIntAttribute(XElement element, string attributeName)
@@ -215,7 +215,21 @@ namespace ImporterFramework.Workers
                 return d;
             }
 
-            throw new ImportException($"Property '{attributeName}' on element '{element.Name}' is not a double.");
+            throw new ImportException($"Attribute '{attributeName}' on element '{element.Name}' is not an int.");
+        }
+
+        protected bool GetBoolAttribute(XElement element, string attributeName)
+        {
+            var val = GetAttribute(element, attributeName);
+
+            bool b;
+
+            if (bool.TryParse(val, out b))
+            {
+                return b;
+            }
+
+            throw new ImportException($"Attribute '{attributeName}' on element '{element.Name}' is not a bool.");
         }
 
         protected XElement GetDescendant(XElement element, string descendantName)
